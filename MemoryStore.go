@@ -4,7 +4,6 @@ import (
 	"time"
 )
 
-// Every key-value pair in the store has a timer that will be reset when the key is accessed. If the key is not accessed for the duration, the key-value pair will be deleted by the timer's callback function.
 type MemoryStore[T any] struct {
 	store ConcurrencyMap[string, entry[T]]
 }

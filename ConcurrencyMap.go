@@ -1,6 +1,5 @@
 package state
 
-// Only one goroutine can access the map, other goroutines through the channel to send the function to the goroutine to access the map.
 type ConcurrencyMap[K comparable, V any] struct {
 	m map[K]V
 	c chan func()
