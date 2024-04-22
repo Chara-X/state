@@ -2,14 +2,16 @@ package state
 
 import (
 	"time"
+
+	"github.com/Chara-X/collections"
 )
 
 type MemoryStore[T any] struct {
-	store ConcurrencyMap[string, entry[T]]
+	store collections.ConcurrentMap[string, entry[T]]
 }
 
 func NewMemoryStore[T any]() MemoryStore[T] {
-	return MemoryStore[T]{store: NewConcurrencyMap[string, entry[T]]()}
+	return MemoryStore[T]{store: collections.NewConcurrentMap[string, entry[T]]()}
 }
 func (store *MemoryStore[T]) Get(key string) (T, bool) {
 	if entry, ok := store.store.Get(key); ok {
