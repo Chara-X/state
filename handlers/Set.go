@@ -16,10 +16,10 @@ func (s *Set) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	var value, _ = io.ReadAll(request.Body)
 	var duration, _ = time.ParseDuration(request.URL.Query().Get("duration"))
 	if eTag := request.Header.Get("If-Match"); eTag != "" {
-		if entry, ok := s.Store.Get(key); ok && eTag != entry.eTag {
+		if entry, ok := s.Store.Load(key); ok && eTag != entry.eTag {
 			writer.WriteHeader(http.StatusPreconditionFailed)
 			return
 		}
 	}
-	s.Store.Set(key, entry{value, uuid.NewString()}, duration)
+	s.Store.Store(key, entry{value, uuid.NewString()}, duration)
 }
