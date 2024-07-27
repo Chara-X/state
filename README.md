@@ -23,3 +23,7 @@ func ExampleClient() {
     // b true 554de156-d361-4f5f-b2b1-8a86d7817ba6
 }
 ```
+
+## References
+
+[State management overview](https://docs.dapr.io/developing-applications/building-blocks/state-management/state-management-overview)
