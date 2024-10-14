@@ -24,6 +24,6 @@ func ExampleClient() {
 }
 ```
 
-## References
+## Reference
 
 [State management overview](https://docs.dapr.io/developing-applications/building-blocks/state-management/state-management-overview)
